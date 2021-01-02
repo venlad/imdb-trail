@@ -7,11 +7,12 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 250
+    maxWidth: 250,
+    margin: "5px"
   },
   media: {
     height: 200
@@ -22,7 +23,6 @@ const ResultCard = ({ movie, clickCard }) => {
   const classes = useStyles();
 
   return (
-    <Link to={`/user/${movie.id}`}>
     <Card className={classes.root} onClick={clickCard}>
       <CardActionArea>
         {movie.poster_path ? (
@@ -47,9 +47,14 @@ const ResultCard = ({ movie, clickCard }) => {
           </Typography>
         </CardContent>
       </CardActionArea>
-      
+      <CardActions>
+        <Link to={`/user/${movie.id}`}>
+          <Button size="small" color="primary" onClick={clickCard}>
+            Learn More
+          </Button>
+        </Link>
+      </CardActions>
     </Card>
-    </Link>
   );
 };
 
@@ -63,5 +68,5 @@ export default ResultCard;
 //           <Button size="small" color="primary" onClick={clickCard}>
 //             Learn More
 //           </Button>
-//         </Link>  
+//         </Link>
 //       </CardActions>

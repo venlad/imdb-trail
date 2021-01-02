@@ -1,28 +1,42 @@
-import React from 'react'
-import {Navbar, Nav} from "react-bootstrap"
-import {Link} from 'react-router-dom' 
+import React from "react";
+import { Navbar, Nav, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
-function Header() {
-    return (
-        <>
-        <Navbar bg="dark" variant="dark" fluid>
-            <Nav className="m-auto">
-                <Link to="/user/movies">
-                    <Navbar.Brand>-Movies-</Navbar.Brand>
-                </Link>
-                <Link to="/user/shows">
-                    <Navbar.Brand>-Tv Shows-</Navbar.Brand>
-                </Link>
-                <Link to="/user/topmovies">
-                    <Navbar.Brand>-Top Movies-</Navbar.Brand>
-                </Link>
-                <Link to="/user/topshows">
-                    <Navbar.Brand>-Top Tv Shows-</Navbar.Brand>
-                </Link>
-            </Nav>
-        </Navbar>
-        </>
-    )
+function Header({ userName }) {
+  return (
+    <>
+      <Navbar bg="light" variant="primary" fluid>
+        <Nav m-auto>
+          <Nav.Link>
+            <Link to="/user/movies">
+              <Button variant="light">Movies</Button>
+            </Link>
+          </Nav.Link>
+
+          <Nav.Link>
+            <Link to="/user/shows">
+              <Button variant="light">Tv Shows</Button>
+            </Link>
+          </Nav.Link>
+
+          <Nav.Link>
+            <Link to="/user/topmovies">
+              <Button variant="light">Top Movies</Button>
+            </Link>
+          </Nav.Link>
+
+          <Nav.Link>
+            <Link to="/user/topshows">
+              <Button variant="light">Top Tv Shows</Button>
+            </Link>
+          </Nav.Link>
+        </Nav>
+      </Navbar>
+      <p>
+        welcome, <i>{userName}</i>
+      </p>
+    </>
+  );
 }
 
-export default Header
+export default Header;

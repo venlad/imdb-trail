@@ -10,6 +10,7 @@ import TopMovies from "./components/TopMovies";
 import TopTv from "./components/TopTv";
 import CardDetail from "./components/CardDetail";
 import { signInWithGoogle, auth } from "./firebase";
+import Wishlist from "./components/Wishlist";
 
 class App extends Component {
   state = {
@@ -67,7 +68,10 @@ class App extends Component {
                 <TopTv />
               </Route>
               <Route path="/user/:detailId">
-                <CardDetail />
+                <CardDetail user={user} />
+              </Route>
+              <Route exact path="/wishlist">
+                <Wishlist user={user} />
               </Route>
             </Switch>
           </Container>
