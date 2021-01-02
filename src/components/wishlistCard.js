@@ -8,10 +8,11 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { Link } from "react-router-dom";
+import { db } from "../firebase";
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 250,
+    maxWidth: 300,
     margin: "5px"
   },
   media: {
@@ -19,7 +20,7 @@ const useStyles = makeStyles({
   }
 });
 
-const ResultCard = ({ movie, clickCard }) => {
+const WishlistCard = ({ movie, clickCard, id, uid }) => {
   const classes = useStyles();
 
   return (
@@ -48,6 +49,13 @@ const ResultCard = ({ movie, clickCard }) => {
         </CardContent>
       </CardActionArea>
       <CardActions>
+        <Button
+          size="small"
+          color="primary"
+          onClick={() => db.collection(`${uid}`).doc(id).delete()}
+        >
+          Remove
+        </Button>
         <Link to={`/user/${movie.id}`}>
           <Button size="small" color="primary" onClick={clickCard}>
             Learn More
@@ -58,15 +66,4 @@ const ResultCard = ({ movie, clickCard }) => {
   );
 };
 
-export default ResultCard;
-
-// <CardActions>
-//         <Button size="small" color="primary">
-//           Share
-//         </Button>
-//         <Link to={`/user/${movie.id}`}>
-//           <Button size="small" color="primary" onClick={clickCard}>
-//             Learn More
-//           </Button>
-//         </Link>
-//       </CardActions>
+export default WishlistCard;
